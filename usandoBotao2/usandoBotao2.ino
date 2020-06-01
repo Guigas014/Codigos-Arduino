@@ -1,5 +1,5 @@
-int led = 12;
-int botao = 2;
+int led = 13;
+int botao = 7;
 int press = 0;
 int status = 1;
 
