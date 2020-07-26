@@ -11,7 +11,7 @@ void setup() {
 void loop() {
   valorLuz = analogRead(pinoLdr);
 
-  if (valorLuz < 750) {       // Sensibilidade do LDR => 0 a 1023.
+  if (valorLuz < 400) {       // Sensibilidade do LDR => 0 a 1023.
     digitalWrite(pinoLed, HIGH);
   }
   else {

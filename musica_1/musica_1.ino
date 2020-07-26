@@ -1,6 +1,8 @@
+int pinoBuzzer = 6;
+
 void setup()
 {
-  pinMode(3, OUTPUT);
+  pinMode(pinoBuzzer, OUTPUT);
 }
 
 void loop()
@@ -27,16 +29,16 @@ void loop()
   
   for (i = 0; i<sizeof(ode)/2; i++) {
     if (ode[i] != 0) {
-    	tone(3, ode[i]);
+    	tone(pinoBuzzer, ode[i]);
     }
     else {
-    	noTone(3);
+    	noTone(pinoBuzzer);
     }
     delay(tempo[i]*500);
-    noTone(3);
+    noTone(pinoBuzzer);
   }
   
-   noTone(3);
+   noTone(pinoBuzzer);
    delay(10000);
   
 }
