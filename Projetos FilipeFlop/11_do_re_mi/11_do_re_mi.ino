@@ -64,6 +64,7 @@ void loop() {
 }
 
 //-----------------------------------------------------------------
+//Função do botão
 int botaoTeste() {
   
   if (digitalRead(pinoButton) == LOW and testButton == 1) {
