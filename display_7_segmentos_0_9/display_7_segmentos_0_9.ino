@@ -1,4 +1,7 @@
-int a = 3, b = 4, c = 5, d = 6, e = 7, f = 8, g = 9;
+//int a = 3, b = 4, c = 5, d = 6, e = 7, f = 8, g = 9;
+
+int a = 12, b = 13, c = 9, d = 8, e = 7, f = 11, g = 10;
+
 
 int num[10][7] = {
   {a, b, c, d, e, f},		  //Zero

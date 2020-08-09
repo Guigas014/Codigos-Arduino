@@ -11,10 +11,19 @@ void setup() {
 void loop() {
   
   if (digitalRead(pinoTilt) == HIGH) {
-    tone(pinoBuzzer, 440);
-    delay(1000);
+    alarm();
   }
   else {
     noTone(pinoBuzzer); 
   }
+}
+
+void alarm() {
+  for (int i = 1; i <= 8; i++) {
+    tone(pinoBuzzer, 440);
+    delay(400);
+    tone(pinoBuzzer, 494);
+//    noTone(pinoBuzzer); 
+    delay(400);
+  }   
 }
