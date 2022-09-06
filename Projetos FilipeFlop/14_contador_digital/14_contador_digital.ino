@@ -1,4 +1,4 @@
-// Projeto 14 - Contador Digital
+ // Projeto 14 - Contador Digital
 
 int segE = 7;
 int segD = 8;
@@ -21,7 +21,7 @@ void setup() {
 }
 
 void loop() {
-  for (int inc = 9; inc>= 0; inc--) {
+  for (int inc = 0; inc <= 9; inc++) {
     acendendo(inc);
     delay(1000);
   }
