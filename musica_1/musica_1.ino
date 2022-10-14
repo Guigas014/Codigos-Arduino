@@ -1,4 +1,4 @@
-int pinoBuzzer = 6;
+int pinoBuzzer = 4;
 
 void setup()
 {
