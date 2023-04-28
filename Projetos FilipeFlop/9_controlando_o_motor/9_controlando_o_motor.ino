@@ -15,7 +15,8 @@ void loop() {
   valorPot = analogRead(pinoPot);
 
   //Mapeia os valores do potenciometro (entre 0 e 1023) para os valores do servo (entre 0 e 180)
-  valorPot = map(valorPot, 0, 1023, 45, 135);
+  valorPot = map(valorPot, 0, 1023, 0, 255);
+  //valorPot = map(valorPot, 0, 1023, 45, 135);
   
   meuServo.write(valorPot);   //Manda o valor para o servo
   delay(15);
