@@ -9,6 +9,11 @@ bool estadoLedRed = 1;
 bool estadoLedGreen = 0;
 bool estadoRele = 1;
 
+//Segundos, Minuto, Horas
+long umSeg = 1000;
+long umMin = 60 * umSeg;
+long umaHora = 60 * umMin;
+
 
 void setup() {
   Serial.begin(1200);
@@ -18,6 +23,7 @@ void setup() {
   pinMode(ledRed, OUTPUT);
   pinMode(rele, OUTPUT);
 
+  //Valores iniciais
   digitalWrite(rele, HIGH);
   digitalWrite(ledRed, HIGH);
   digitalWrite(ledGreen, LOW);
@@ -29,67 +35,41 @@ void loop() {
   // Contador (Função millis).
   unsigned long tempo = millis();
 
-  //Imprimi o tempo em segundos
-  long segundos = 0;
-  segundos = tempo/1000;
-//  Serial.println(segundos);
+  //transforma o tempo para segundos
+  long segundosTotal = 0;
+  segundosTotal = tempo/1000;
 
-  //Segundos, Minuto, Horas e Intervalo desejado
-  long umSeg = 1000;
-  long umMin = 60 * umSeg;
-  long umaHora = 60 * umMin;
 
-  long timeON = umMin;
+  //Intervalos desejado
+  long timeON = umMin * 28;
   long timeOFF = umMin * 2;
-  long timeON2 = umMin * 5;
-  long timeOFF2 = umMin * 8;
-
-
-// Nesse caso o estado do motor e dos leds são alterados todos os segundos.
-//  if (tempo >= timeON && tempo <= timeOFF) {
-//    liga();
-//
-//    Serial.println(segundos);    
-//  }
-//  else if (tempo >= timeON2 && tempo <= timeOFF2) {
-//    liga();
-//
-//    Serial.println(segundos);    
-//  }
-//  else {
-//    desliga();
-//
-//    //Serial.println(segundos);  
-//  }
+  long timeON2 = umMin * 28;
+  long timeOFF2 = umMin * 2;
 
 
 // Nesse caso o estado do motor e dos leds são alterados apenas no segundo especificado.
     Serial.println("Começou!!");
-    Serial.println(segundos);
-
+    mostraTempo(segundosTotal);
+    
     //Liga
     delay(timeON);
     changeState();
-    Serial.println("Ligado após 1 min!");
-    Serial.println(" ");
+    Serial.println("Ligou!");
 
     //Desliga
     delay(timeOFF);
     changeState();
-    Serial.println("Desligado após 2 min!");
-    Serial.println(" ");
+    Serial.println("Desligou!");
 
     //Liga
     delay(timeON2);
     changeState();
-    Serial.println("Ligado após 5 min!");
-    Serial.println(" ");
+    Serial.println("Ligou!");
 
     //Desliga
     delay(timeOFF2);
     changeState();
-    Serial.println("Desligado após 8 min!");
-    Serial.println(" ");
+    Serial.println("Desligou!");
     
 
 
@@ -104,6 +84,23 @@ void loop() {
   
 }
 
+
+void mostraTempo(long seg) {
+  long horas = seg / 3600;
+  long minutos = seg / 60;
+  long segundos = seg % 60;
+  
+  Serial.print(" ");
+  Serial.print(seg / 3600);
+  Serial.print(":");
+  //Serial.print(seg / 60);
+  Serial.print(minutos);
+  Serial.print(":");
+  //Serial.print(seg%60);
+  Serial.print(segundos);
+
+  Serial.println(" ");
+}
 
 void liga() {
   digitalWrite(rele, LOW);
@@ -127,3 +124,23 @@ void changeState() {
   estadoLedGreen = !estadoLedGreen;
   digitalWrite(ledGreen, estadoLedGreen);
 }
+
+
+
+
+// Nesse caso o estado do motor e dos leds são alterados todos os segundos.
+//  if (tempo >= timeON && tempo <= timeOFF) {
+//    liga();
+//
+//    Serial.println(segundos);    
+//  }
+//  else if (tempo >= timeON2 && tempo <= timeOFF2) {
+//    liga();
+//
+//    Serial.println(segundos);    
+//  }
+//  else {
+//    desliga();
+//
+//    //Serial.println(segundos);  
+//  }
